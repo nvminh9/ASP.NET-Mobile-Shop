@@ -1,0 +1,73 @@
+﻿@using Mobile_Shop.Models
+@model THANHVIEN
+
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <!-- //Modal content-->
+    </div>
+</div>
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body modal-body-sub_agile">
+        <div class="main-mailposi">
+            <span class="fa fa-envelope-o" aria-hidden="true"></span>
+        </div>
+        <div class="modal_body_left modal_body_left1">
+            <h3 class="agileinfo_sign">ĐĂNG KÝ</h3>
+            <p>
+                Hãy tham gia Cửa hàng di động! Hãy thiết lập Tài khoản của bạn.
+            </p>
+            @using (Ajax.BeginForm("DangKy", "Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "ThongBao" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="styled-input agile-styled-input-top">
+                    <span>Tài khoản</span>
+                    @Html.TextBoxFor(model => model.TaiKhoan)
+                    @Html.ValidationMessageFor(mode => mode.TaiKhoan)
+                </div>
+                <div class="styled-input">
+                    <span>Họ tên</span>
+                    @Html.TextBox("HoTen")
+                </div>
+                <div class="styled-input">
+                    <span>Email</span>
+                    @Html.TextBox("Email")
+                </div>
+                <div class="styled-input">
+                    <span>Số điên thoại</span>
+                    @Html.TextBox("SoDienThoai")
+                </div>
+                <div class="styled-input">
+                    <span>Địa chỉ</span>
+                    @Html.TextBox("DiaChi")
+                </div>
+                <div class="styled-input">
+                    <span>Mật khẩu</span>
+                    @Html.TextBox("MatKhau")
+                </div>
+                <div class="styled-input">
+                    <span>Nhập lại mật khẩu</span>
+                    @Html.TextBox("MatKhau")
+                </div>
+
+                <input type="submit" value="Đăng ký">
+            }
+
+            <h4 style="color:green"> @ViewBag.ThongBao</h4>
+            <p>
+                <a href="#">Bằng cách nhấp vào đăng ký, tôi đồng ý với các điều khoản của bạn</a>
+            </p>
+        </div>
+    </div>
+</div>
+

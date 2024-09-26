@@ -1,0 +1,199 @@
+﻿@using Mobile_Shop.Models
+@model List<ItemGioHang>
+
+
+@{
+    ViewBag.Title = "XemGioHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.Count <= 0 || Model == null)
+{
+    <div class="check_cart">
+        <h1>Giỏ hàng rỗng</h1>
+        <img src="~/Asset/images/empty_cart.png" />
+    </div>
+}
+else
+{
+    <div class="page-head_agile_info_w3l"></div>
+    <div class="services-breadcrumb">
+        <div class="agile_inner_breadcrumb">
+            <div class="container">
+                <ul class="w3_short">
+                    <li>
+                        <a href="@Url.Action("Index", "Home")">Trang chủ</a>
+                        <i>|</i>
+                    </li>
+                    <li>Giỏ hàng</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- checkout page -->
+    <div class="privacy">
+        <div class="container">
+            <!-- tittle heading -->
+            <h3 class="tittle-w3l">
+                Giỏ Hàng
+                <span class="heading-style">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </span>
+            </h3>
+            <!-- //tittle heading -->
+            <div class="checkout-right">
+                <h4>
+                    Giỏ hàng của bạn có:
+                    <span>@Model.Count sản phẩm</span>
+                </h4>
+                <div class="table-responsive">
+                    <table class="timetable_sub">
+                        <thead>
+                            <tr>
+                                <th style="border-radius: 10px 0px 0px 0px;">SL No.</th>
+                                <th>Sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Tên sản phẩm</th>
+
+                                <th>Thành tiền</th>
+                                <th>Sửa</th>
+                                <th style="border-radius: 0px 10px 0px 0px;">Xóa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @for (int i = 0; i < Model.Count; i++)
+                            {
+                                <tr class="rem1">
+                                    <td class="invert">@i</td>
+
+                                    <td class="invert-image">
+                                        <a href="single2.html">
+                                            <img src="@Url.Content("/Asset/images/product/"+Model[i].HinhAnh)" alt=" " class="img-responsive">
+                                        </a>
+                                    </td>
+                                    <td class="invert">
+                                        <div class="quantity">
+                                            <div class="quantity-select">
+                                                <div class="entry value-minus">&nbsp;</div>
+                                                <div class="entry value">
+                                                    <span>@Model[i].SoLuong</span>
+                                                </div>
+                                                <div class="entry value-plus active">&nbsp;</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="invert">@Model[i].TenSP</td>
+                                    <td class="invert">@string.Format("{0:N0} \u20ab", Model[i].ThanhTien)</td>
+                                    <td class="invert">
+                                        <div class="rem">
+                                            <div>
+                                                @Html.ActionLink("Sửa", "SuaGioHang", new { @pMaSP = Model[i].MaSP })
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="invert">
+                                        <div class="rem">
+                                            <div>
+                                                @Html.ActionLink("Xóa", "XoaGioHang", new { @pMaSP = Model[i].MaSP })
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            @*Lưu thông tin khách hàng chưa đang ký*@
+            <div class="checkout-left">
+                <div class="address_form_agile">
+                    <h4>Điền thông tin khách hàng</h4>
+
+                    <div class="divDatHang" style="text-align:right">
+                        @using (Html.BeginForm("DatHang", "GioHang"))
+                        {
+                            if (Session["TaiKhoan"] == null)
+                            {
+                                <form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
+                                    <div class="creditly-wrapper wthree, w3_agileits_wrapper">
+                                        <div class="information-wrapper">
+                                            <div class="first-row">
+                                                <div class="controls">
+                                                    @Html.TextBox("TenKH", "Tên khách hàng")
+                                                    <p style="color:red;" id="TB_TENKH"></p>
+                                                </div>
+                                                <div class="w3_agileits_card_number_grids">
+                                                    <div class="w3_agileits_card_number_grid_left">
+                                                        <div class="controls">
+                                                            @Html.TextBox("DiaChi", "Địa Chỉ")
+                                                            <p style="color:red;" id="TB_DIACHI"></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="w3_agileits_card_number_grid_right">
+                                                        <div class="controls">
+                                                            @Html.TextBox("SoDienThoai", "Số điện thoại")
+                                                        </div>
+                                                    </div>
+                                                    <div class="clear"> </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            }
+
+                            <input type="submit" class="btn btn-danger" value="Đặt hàng" id="btnDatHang" />
+                            <a href="@Url.Action("Index","Shop")" class="btn btn-success">Mua tiếp</a>
+                        }
+
+                    </div>
+                    <div class="checkout-right-basket">
+                        <a href="payment.html">
+                            Make a Payment
+                            <span class="fa fa-hand-o-right" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+
+    @*Kiểm validation thông qua jquery*@
+    <script>
+        $("#btnDatHang").click(function () {
+            var loi = 0;
+            if ($("#TenKH").val == "") {
+                $("#TB_TENKH").text("Tên khách hàng không được bỏ trống");
+                loi++;
+            }
+            else {
+
+                $("#TB_TENKH").text("");
+            }
+
+            if ($("#DiaChi").val == "") {
+                $("#TB_DIACHI").text("Tên địa chỉ không được bỏ trống");
+                loi++;
+            }
+            else {
+
+                $("#TB_DIACHI").text("");
+            }
+            if (loi != 0) {
+                // ngăn sự kiện submit đến server
+                return false;
+            }
+        })
+    </script>
+
+    <!-- //checkout page -->
+
+}
+
+

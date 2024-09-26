@@ -1,0 +1,141 @@
+﻿@{ ViewBag.Title = "Details"; Layout = "~/Views/Shared/_Layout.cshtml";}
+
+@model Mobile_Shop.Models.SANPHAM
+<!-- //navigation -->
+<!-- banner-2 -->
+<div class="page-head_agile_info_w3l"></div>
+<!-- //banner-2 -->
+<!-- page -->
+<div class="services-breadcrumb">
+    <div class="agile_inner_breadcrumb">
+        <div class="container">
+            <ul class="w3_short">
+                <li>
+                    <a href="index.html">Trang Chủ</a>
+                    <i>|</i>
+                </li>
+                <li>Chi tiết sản phẩm</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- //page -->
+<div class="banner-bootom-w3-agileits">
+    <div class="container">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l">
+            Sản phẩm
+            <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </h3>
+        <!-- //tittle heading -->
+        <div class="col-md-5 single-right-left ">
+            <div class="grid images_3_of_2">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li data-thumb="@Url.Content("/Asset/images/product/"+Model.Hinh1)">
+                            <div class="thumb-image">
+                                <img src="@Url.Content("~/Asset/images/product/"+Model.Hinh1)" data-imagezoom="true" class="img-responsive" alt="">
+                            </div>
+                        </li>
+                        <li data-thumb="@Url.Content("/Asset/images/product/"+Model.Hinh2)">
+                            <div class="thumb-image">
+                                <img src="@Url.Content("~/Asset/images/product/"+Model.Hinh2)" data-imagezoom="true" class="img-responsive" alt="">
+                            </div>
+                        </li>
+                        <li data-thumb="@Url.Content("/Asset/images/product/"+Model.Hinh3)">
+                            <div class="thumb-image">
+                                <img src="@Url.Content("~/Asset/images/product/"+Model.Hinh3)" data-imagezoom="true" class="img-responsive" alt="">
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 single-right-left simpleCart_shelfItem">
+            <h3>@Model.TenSP</h3>
+            <div class="rating1">
+                <span class="starRating">
+                    <input id="rating5" type="radio" name="rating" value="5">
+                    <label for="rating5">5</label>
+                    <input id="rating4" type="radio" name="rating" value="4">
+                    <label for="rating4">4</label>
+                    <input id="rating3" type="radio" name="rating" value="3" checked="">
+                    <label for="rating3">3</label>
+                    <input id="rating2" type="radio" name="rating" value="2">
+                    <label for="rating2">2</label>
+                    <input id="rating1" type="radio" name="rating" value="1">
+                    <label for="rating1">1</label>
+                </span>
+            </div>
+            <p>
+                <span class="item_price"></span>
+                <span class="item_price">@string.Format("{0:N0} \u20ab", Model.DonGia)</span>
+                <label>Miễn phí vận chuyển</label>
+            </p>
+            <div class="single-infoagile">
+                <ul>
+                    <li>
+                        Mới, đầy đủ phụ kiện từ nhà sản xuất
+                    </li>
+                    <li>
+                        Điện thoại, cáp, que chọc sim, sách hướng dẫn
+                    </li>
+                    <li>
+                        Bảo hành 12 tháng tại trung tâm bảo hành Chính hãng. 1 đổi 1 trong 30 ngày nếu có lỗi phần cứng từ nhà sản xuất.
+                    </li>
+                    <li>
+                        Giá sản phẩm đã bao gồm VAT
+
+                    </li>
+                </ul>
+
+                <div class="occasion-cart">
+                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                        <form action="@Url.Action("ThemGioHang", "GioHang", new { @pMaSP = @Model.MaSP, @strUrl = Request.Url.ToString() })" method="post">
+                            <fieldset>
+                                <input id="btnThemGioHanginDetail" type="submit" name="submit" value="Thêm vào Giỏ Hàng" class="button" />
+                            </fieldset>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+
+    <br/>
+    <div class="featured-section" id="projects" style="margin-top:150px;">
+        <div class="container">
+
+            <h3 class="tittle-w3l">
+                Sản phẩm liên quan
+                <span class="heading-style">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </span>
+            </h3>
+
+            <div class="content-bottom-in">
+                <ul id="flexiselDemo1">
+                    @Html.Action("SanPhamLienQuanPartial", "Shop", new { @id = Model.MaNSX })
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<script>
+    $('#btnThemGioHanginDetail').click(() => {
+        alert("Thêm vào giỏ hàng thành công");
+    })
+    $('#btnThemGioHanginSanPhamlienquan').click(() => {
+        alert("Thêm vào giỏ hàng thành công");
+    })
+</script>

@@ -1,0 +1,80 @@
+﻿@using Mobile_Shop.Models
+@model IEnumerable<SANPHAM>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<div class="ban-top">
+    <div class="container">
+
+        <div class="top_nav_left">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                                aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav menu__list">
+                            <li class="active">
+                                @Html.ActionLink("Trang chủ", "Index", "Home")
+
+                            </li>
+                            <li class="">
+                                <a class="nav-stylehead" href="@Url.Action("GioiThieu", "Home")">Giới thiệu</a>
+                            </li>
+                            <li class="dropdown">
+
+                                @Html.ActionLink("Sản phẩm", "Index", "Shop")
+
+                            </li>
+                            <li class="dropdown">
+                                <a id="btnThuongHieu" class="nav-stylehead dropdown-toggle" href="@Url.Content("~/Views/Shop/Index.cshtml")" data-toggle="dropdown">
+                                    Thương hiệu
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu agile_short_dropdown dropdownThuongHieu">
+                                       @* Xử lý với Jquery, Ajax *@
+                                </ul>
+                            </li>
+                            <li class="" style="cursor: none;">
+                                <a href="#" style="color: transparent;">Câu hỏi</a>
+                                @*@Html.ActionLink("Câu hỏi thường gặp", "Index", "Shop")*@
+                            </li>
+                            <li class="" style="cursor: none;">
+                                <a href="#" style="color: transparent;">Trang</a>
+                                @*@Html.ActionLink("Trang", "Index", "Home")*@
+                            </li>
+                            <li class="" style="cursor: none;">
+                                <a href="#" style="color: transparent;">Liên hệ</a>
+                                @*@Html.ActionLink("Liên hệ", "Contact", "Home")*@
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#btnThuongHieu').click(() => {
+        $('.dropdownThuongHieu').empty();
+        $.ajax({
+            type: 'GET',
+            url: '/api/nhasanxuat',
+            success: (responses) => {
+                for (var i = 0; i <= responses.length; i++) {
+                    const nsxRow = responses[i];
+                    const strHtml = '<li> <a href="/Shop/SanPham?MaNSX=' + nsxRow.MaNSX + '" data-nsxid="' + nsxRow.MaNSX + '">' + nsxRow.TenNSX + '</a> </li>';
+                    $('.dropdownThuongHieu').append(strHtml);
+                }
+            },
+            error: (err) => { console.log(err); }
+        })
+    })
+</script>

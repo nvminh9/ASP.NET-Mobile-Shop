@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Mobile_Shop.Models.KHACHHANG>
+
+@{
+    ViewBag.Title = "SortDuLieu";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>SortDuLieu</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaKH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaTV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenKH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaTV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoDienThoai)
+            </td>
+
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,301 @@
+﻿@using Mobile_Shop.Models
+@model IEnumerable<SANPHAM>
+@{
+    ViewBag.Title = "SanPham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="ads-grid">
+    <div class="container">
+        <!-- tittle heading -->
+        <!--<h3 class="tittle-w3l">-->
+            @*@Model.First().NHASANXUAT.TenNSX*@
+            <!--<span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </h3>-->
+        <!-- //tittle heading -->
+        <!-- product left -->
+        <div class="side-bar col-md-3">
+            <div class="search-hotel">
+                <h3 class="agileits-sear-head">Tìm kiếm</h3>
+                <form action="#" method="post">
+                    <input type="search" placeholder="Bạn tìm gì..." name="search" required="">
+                    <input type="submit" value=" ">
+                </form>
+            </div>
+            <!-- price range -->
+            <div class="range">
+                <h3 class="agileits-sear-head">Chọn mức giá phù hợp với bạn</h3>
+                <ul class="dropdown-menu6">
+                    <li>
+                        <div id="slider-range"></div>
+                        <input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
+                    </li>
+                </ul>
+            </div>
+            <!-- //price range -->
+            <!-- food preference -->
+            <div class="left-side">
+                <h3 class="agileits-sear-head">Nhu cầu</h3>
+                <ul>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">Chơi game / Cấu hình cao</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">Pin khủng trên 5000 mAh</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">Chụp ảnh, quay phim</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">Livestream</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">Mỏng nhẹ</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- //food preference -->
+            <!-- discounts -->
+            <div class="left-side">
+                <h3 class="agileits-sear-head">Ram</h3>
+                <ul>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">2 GB</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">3 GB</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">4 GB</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">6 GB</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">8 GB</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">12 GB</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="left-side">
+                <h3 class="agileits-sear-head">Dung lượng lưu trữ</h3>
+                <ul>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">16 GB</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">32 GB</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">64 GB</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">128 GB</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">256 GB</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">512 GB</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">1 TB</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- //discounts -->
+            <!-- reviews -->
+            <div class="customer-rev left-side">
+                <h3 class="agileits-sear-head">Customer Review</h3>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <span>5.0</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <span>4.0</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <span>3.5</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <span>3.0</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            <span>2.5</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- //reviews -->
+            <!-- cuisine -->
+            <div class="left-side">
+                <h3 class="agileits-sear-head">Hãng</h3>
+                <ul>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">Iphone</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">Samsung</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">OPPO</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">Xiaomi</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">VIVO</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">Realme</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">Nokia</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">Masstel</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span">Itel</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="checked">
+                        <span class="span"> Mobell</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- //product left -->
+        <!-- product right -->
+        <div class="agileinfo-ads-display col-md-9 w3l-rightpro">
+            <h4 id="nsxName" style="text-align: center; font-weight: 500; font-size: 35px; color: black;"></h4>
+            <div class="wrapper">
+                <!-- first section -->
+                <div class="product-sec1">
+                    <div id="listProductbyBrand" class="product-sec1">
+                        <!-- Xử lý Jquery, Ajax -->
+                        <!-- ... -->
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+            </div>
+        </div>
+        <!-- //product right -->
+    </div>
+</div>
+
+<script>
+    // Hàm lấy value prams query string trên url
+    function GetParameterValues(param) {
+        var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for (var i = 0; i < url.length; i++) {
+            var urlparam = url[i].split('=');
+            if (urlparam[0] == param) {
+                return urlparam[1];
+            }
+        }
+    }
+    var mansx = GetParameterValues('MaNSX');
+    console.log("Mã NSX: ", mansx);
+
+    // Xử lý tiêu đề hãng
+    $(document).ready(() => {
+        $.ajax({
+            type: 'GET',
+            url: `/api/nhasanxuat?id=${mansx}`,
+            success: (response) => {
+                console.log("Success");
+                console.log(response.TenNSX);
+                document.getElementById('nsxName').innerHTML = response.TenNSX;
+            },
+            error: (err) => { console.log(err); }
+        });
+    })
+    //
+    // Xử lý list sp theo hãng
+    $(document).ready(() => {
+        $.ajax({
+            type: 'GET',
+            url: `/api/shop?id=${mansx}`,
+            success: (response) => {
+                for (var i = 0; i <= response.length; i++) {
+                    const strHtml = '<div class="col-xs-4 product-men"><div class="men-pro-item simpleCart_shelfItem"><div class="men-thumb-item"><img src="/Asset/images/product/' + response[i].HinhChinh + '" alt=""><div class="men-cart-pro"><div class="inner-men-cart-pro"><a href="/Shop/Details/' + response[i].MaSP + '" class="link-product-add-cart">Xem chi tiết</a></div></div></div><div class="item-info-product"><h4 class="text-truncate"><a href="single.html">' + response[i].TenSP + '</a></h4><div class="info-product-price"><span class="item_price">' + response[i].DonGia + ' VNĐ</span></div><div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out"><form action="/GioHang/ThemGioHang?pMaSP=' + response[i].MaSP + '&strUrl=/Shop/SanPham?MaNSX=' + mansx + '" method="post"><fieldset><input type="submit" name="submit" value="Thêm vào Giỏ Hàng" class="button btnThemGio" /></fieldset></form></div></div></div></div>';
+                    $('#listProductbyBrand').append(strHtml);
+                }
+            },
+            error: (err) => { console.log(err); }
+        });
+    })
+    //
+    $('.btnThemGioinSanPham').click(() => {
+        alert("Thêm vào giỏ hàng thành công")
+    })
+</script>

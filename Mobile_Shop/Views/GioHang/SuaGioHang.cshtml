@@ -1,0 +1,161 @@
+﻿@using Mobile_Shop.Models
+@model ItemGioHang
+@{
+    ViewBag.Title = "SuaGioHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    List<ItemGioHang> listGioHang = ViewBag.GioHang as List<ItemGioHang>;
+}
+
+<div class="page-head_agile_info_w3l"></div>
+<div class="services-breadcrumb">
+    <div class="agile_inner_breadcrumb">
+        <div class="container">
+            <ul class="w3_short">
+                <li>
+                    <a href="@Url.Action("Index", "Home")">Trang chủ</a>
+                    <i>|</i>
+                </li>
+                <li>Giỏ hàng</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- checkout page -->
+<div class="privacy">
+    <div class="container">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l">
+            Giỏ Hàng
+            <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </h3>
+        <!-- //tittle heading -->
+        <div class="checkout-right">
+            <h4>
+                Giỏ hàng của bạn có:
+                <span>@listGioHang.Count sản phẩm</span>
+            </h4>
+            <div class="table-responsive">
+                <table class="timetable_sub">
+                    <thead>
+                        <tr>
+                            <th>SL No.</th>
+                            <th>Sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Tên sản phẩm</th>
+
+                            <th>Thành tiền</th>
+                            <th>Sửa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @for (int i = 0; i < listGioHang.Count; i++)
+                        {
+                            // SẢN PHẨM CÓ MÃ SẢN PHẪM ĐƯỢC GỬI TỪ THAM SỐ BÊN TRANG XEM GIỎ HÀNG
+                            if (Model.MaSP == listGioHang[i].MaSP)
+                            {
+
+                                using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @MaSP = listGioHang[i].MaSP, @soluong = listGioHang[i] }))
+                                {
+                                    <tr class="rem1">
+                                        <td class="invert">@i </td>
+                                        @Html.Hidden("MASP", listGioHang[i].MaSP)
+                                        <td class="invert-image">
+                                            <a href="single2.html">
+                                                <img src="@Url.Content("/Asset/images/product/"+listGioHang[i].HinhAnh)" alt=" " class="img-responsive">
+                                            </a>
+                                        </td>
+                                        <td class="invert">
+                                            <div class="quantity">
+                                                <div class="quantity-select">
+                                                    <span>@Html.TextBox("SoLuong", listGioHang[i].SoLuong, new { @class = "SoLuongThayDoi" })</span>
+                                                    <p id="TB_SOLUONGTHAYDOI"></p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="invert">@listGioHang[i].TenSP</td>
+                                        <td class="invert">@string.Format("{0:N0} \u20ab", listGioHang[i].DonGia)</td>
+                                        <td class="invert">
+                                            <div class="rem">
+                                                <div>
+                                                    <input type="submit" value="Cập nhật" id="btnCapNhatGH" />
+                                                </div>
+                                            </div>
+                                            <div class="rem">
+                                                <div>
+                                                    @Html.ActionLink("Xóa", "XoaGioHang", new { @pMaSP = listGioHang[i].MaSP })
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                }
+                            }
+                            else
+                            {
+                                <tr class="rem1">
+                                    <td class="invert">@i</td>
+
+                                    <td class="invert-image">
+                                        <a href="single2.html">
+                                            <img src="@Url.Content("/Asset/images/product/"+listGioHang[i].HinhAnh)" alt=" " class="img-responsive">
+                                        </a>
+                                    </td>
+                                    <td class="invert">
+                                        <div class="quantity">
+                                            <div class="quantity-select">
+                                                <div class="entry value-minus">&nbsp;</div>
+                                                <div class="entry value">
+                                                    <span>@listGioHang[i].SoLuong</span>
+                                                </div>
+                                                <div class="entry value-plus active">&nbsp;</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="invert">@listGioHang[i].TenSP</td>
+                                    <td class="invert">@string.Format("{0:N0} \u20ab", listGioHang[i].DonGia)</td>
+                                    <td class="invert">
+                                        <div class="rem">
+                                            <div>
+                                                @Html.ActionLink("Sửa", "SuaGioHang", new { @pMaSP = listGioHang[i].MaSP })
+                                            </div>
+                                        </div>
+                                        <div class="rem">
+                                            <div>
+                                                @Html.ActionLink("Xóa", "XoaGioHang", new { @pMaSP = listGioHang[i].MaSP })
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- //checkout page -->
+<!-- Kiể tra  số lương thay đổi  -->
+<script>
+const { softhyphens } = require("modernizr");
+
+    $("#btnCapNhatGH").click(function () {
+        // Kiểm tra số lương âm hoặc ko phải là số
+        var SoLuong = $(".SoLuongThayDoi").val();
+        if (isNaN(SoLuong) == true || SoLuong < 0) {
+            $("#TB_SOLUONGTHAYDOI").text("Số lượng không hợp lệ!");
+            return false;
+        }
+    })
+</script>

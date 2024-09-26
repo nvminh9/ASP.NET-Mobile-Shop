@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_ShopMobileModelStoreContainer" CdmEntityContainer="DB_ShopMobileEntities">
+    <EntitySetMapping Name="BINHLUANs">
+      <EntityTypeMapping TypeName="DB_ShopMobileModel.BINHLUAN">
+        <MappingFragment StoreEntitySet="BINHLUAN">
+          <ScalarProperty Name="MaBL" ColumnName="MaBL" />
+          <ScalarProperty Name="MaTV" ColumnName="MaTV" />
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="NoiDungBL" ColumnName="NoiDungBL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHITIETDONDATHANGs">
+      <EntityTypeMapping TypeName="DB_ShopMobileModel.CHITIETDONDATHANG">
+        <MappingFragment StoreEntitySet="CHITIETDONDATHANG">
+          <ScalarProperty Name="MaCTDDH" ColumnName="MaCTDDH" />
+          <ScalarProperty Name="MaDDH" ColumnName="MaDDH" />
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="TenSP" ColumnName="TenSP" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHITIETPHIEUNHAPs">
+      <EntityTypeMapping TypeName="DB_ShopMobileModel.CHITIETPHIEUNHAP">
+        <MappingFragment StoreEntitySet="CHITIETPHIEUNHAP">
+          <ScalarProperty Name="MaCTPN" ColumnName="MaCTPN" />
+          <ScalarProperty Name="MaPN" ColumnName="MaPN" />
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="DonGiaNhap" ColumnName="DonGiaNhap" />
+          <ScalarProperty Name="SoLuongNhap" ColumnName="SoLuongNhap" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHITIETSANPHAMs">
+      <EntityTypeMapping TypeName="DB_ShopMobileModel.CHITIETSANPHAM">
+        <MappingFragment StoreEntitySet="CHITIETSANPHAM">
+          <ScalarProperty Name="MaCTSP" ColumnName="MaCTSP" />
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="DoPhanGiai" ColumnName="DoPhanGiai" />
+          <ScalarProperty Name="KichThuocManHinh" ColumnName="KichThuocManHinh" />
+          <ScalarProperty Name="DoSangToiDa" ColumnName="DoSangToiDa" />
+          <ScalarProperty Name="MatKinhCarmUng" ColumnName="MatKinhCarmUng" />
+          <ScalarProperty Name="QuayPhim" ColumnName="QuayPhim" />
+          <ScalarProperty Name="DenFlash" ColumnName="DenFlash" />
+          <ScalarProperty Name="TinhNang" ColumnName="TinhNang" />
+          <ScalarProperty Name="HeDieuHanh" ColumnName="HeDieuHanh" />
+          <ScalarProperty Name="ChipXuLy" ColumnName="ChipXuLy" />
+          <ScalarProperty Name="TocDocCPU" ColumnName="TocDocCPU" />
+          <ScalarProperty Name="Ram" ColumnName="Ram" />
+          <ScalarProperty Name="DungLuong" ColumnName="DungLuong" />
+          <ScalarProperty Name="DanhBa" ColumnName="DanhBa" />
+          <ScalarProperty Name="MangDiDong" ColumnName="MangDiDong" />
+          <ScalarProperty Name="Sim" ColumnName="Sim" />
+          <ScalarProperty Name="Wifi" ColumnName="Wifi" />
+          <ScalarProperty Name="GPS" ColumnName="GPS" />
+          <ScalarProperty Name="Bluetooth" ColumnName="Bluetooth" />
+          <ScalarProperty Name="CongKetNoi" ColumnName="CongKetNoi" />
+          <ScalarProperty Name="JackTaiNghe" ColumnName="JackTaiNghe" />
+          <ScalarProperty Name="LoaiPin" ColumnName="LoaiPin" />
+          <ScalarProperty Name="DungLuongPin" ColumnName="DungLuongPin" />
+          <ScalarProperty Name="HoTroSacToiDa" ColumnName="HoTroSacToiDa" />
+          <ScalarProperty Name="CongNghePin" ColumnName="CongNghePin" />
+          <ScalarProperty Name="BaoMatNangCao" ColumnName="BaoMatNangCao" />
+          <ScalarProperty Name="TinhNangDatBiet" ColumnName="TinhNangDatBiet" />
+          <ScalarProperty Name="KhangNuocBui" ColumnName="KhangNuocBui" />
+          <ScalarProperty Name="GhiAm" ColumnName="GhiAm" />
+          <ScalarProperty Name="XemPhim" ColumnName="XemPhim" />
+          <ScalarProperty Name="NgheNhac" ColumnName="NgheNhac" />
+          <ScalarProperty Name="ThietKe" ColumnName="ThietKe" />
+          <ScalarProperty Name="ChatLieu" ColumnName="ChatLieu" />
+          <ScalarProperty Name="KichThuocKhoiLuong" ColumnName="KichThuocKhoiLuong" />
+          <ScalarProperty Name="ThoiDiemRaMat" ColumnName="ThoiDiemRaMat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DONDATHANGs">
+      <EntityTypeMapping TypeName="DB_ShopMobileModel.DONDATHANG">
+        <MappingFragment StoreEntitySet="DONDATHANG">
+          <ScalarProperty Name="MaDDH" ColumnName="MaDDH" />
+          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+          <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
+          <ScalarProperty Name="TrinhTrangGiao" ColumnName="TrinhTrangGiao" />
+          <ScalarProperty Name="NgayGiao" ColumnName="NgayGiao" />
+          <ScalarProperty Name="DaThanhToan" ColumnName="DaThanhToan" />
+          <ScalarProperty Name="UuDai" ColumnName="UuDai" />
+          <ScalarProperty Name="DaHuy" ColumnName="DaHuy" />
+          <ScalarProperty Name="DaXoa" ColumnName="DaXoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KHACHHANGs">
+      <EntityTypeMapping TypeName="DB_ShopMobileModel.KHACHHANG">
+        <MappingFragment StoreEntitySet="KHACHHANG">
+          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+          <ScalarProperty Name="MaTV" ColumnName="MaTV" />
+          <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KHUYENMAIs">
+      <EntityTypeMapping TypeName="DB_ShopMobileModel.KHUYENMAI">
+        <MappingFragment StoreEntitySet="KHUYENMAI">
+          <ScalarProperty Name="MaKhuyenMai" ColumnName="MaKhuyenMai" />
+          <ScalarProperty Name="TenKhuyenMai" ColumnName="TenKhuyenMai" />
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="GiamGia" ColumnName="GiamGia" />
+          <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+          <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAISANPHAMs">
+      <EntityTypeMapping TypeName="DB_ShopMobileModel.LOAISANPHAM">
+        <MappingFragment StoreEntitySet="LOAISANPHAM">
+          <ScalarProperty Name="MaLSP" ColumnName="MaLSP" />
+          <ScalarProperty Name="TenL" ColumnName="TenL" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="BiDanh" ColumnName="BiDanh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAITHANHVIENs">
+      <EntityTypeMapping TypeName="DB_ShopMobileModel.LOAITHANHVIEN">
+        <MappingFragment StoreEntitySet="LOAITHANHVIEN">
+          <ScalarProperty Name="MaLTV" ColumnName="MaLTV" />
+          <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+          <ScalarProperty Name="UuDai" ColumnName="UuDai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAITHANHVIEN_QUYEN">
+      <EntityTypeMapping TypeName="DB_ShopMobileModel.LOAITHANHVIEN_QUYEN">
+        <MappingFragment StoreEntitySet="LOAITHANHVIEN_QUYEN">
+          <ScalarProperty Name="MaLTV" ColumnName="MaLTV" />
+          <ScalarProperty Name="MaQuyen" ColumnName="MaQuyen" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHACUNGCAPs">
+      <EntityTypeMapping TypeName="DB_ShopMobileModel.NHACUNGCAP">
+        <MappingFragment StoreEntitySet="NHACUNGCAP">
+          <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
+          <ScalarProperty Name="TenNCC" ColumnName="TenNCC" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHASANXUATs">
+      <EntityTypeMapping TypeName="DB_ShopMobileModel.NHASANXUAT">
+        <MappingFragment StoreEntitySet="NHASANXUAT">
+          <ScalarProperty Name="MaNSX" ColumnName="MaNSX" />
+          <ScalarProperty Name="TenNSX" ColumnName="TenNSX" />
+          <ScalarProperty Name="ThongTin" ColumnName="ThongTin" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHIEUNHAPs">
+      <EntityTypeMapping TypeName="DB_ShopMobileModel.PHIEUNHAP">
+        <MappingFragment StoreEntitySet="PHIEUNHAP">
+          <ScalarProperty Name="MaPN" ColumnName="MaPN" />
+          <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
+          <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+          <ScalarProperty Name="DaXoa" ColumnName="DaXoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QUYENs">
+      <EntityTypeMapping TypeName="DB_ShopMobileModel.QUYEN">
+        <MappingFragment StoreEntitySet="QUYEN">
+          <ScalarProperty Name="MaQuyen" ColumnName="MaQuyen" />
+          <ScalarProperty Name="TenQuyen" ColumnName="TenQuyen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SANPHAMs">
+      <EntityTypeMapping TypeName="DB_ShopMobileModel.SANPHAM">
+        <MappingFragment StoreEntitySet="SANPHAM">
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
+          <ScalarProperty Name="MaNSX" ColumnName="MaNSX" />
+          <ScalarProperty Name="MaLSP" ColumnName="MaLSP" />
+          <ScalarProperty Name="TenSP" ColumnName="TenSP" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+          <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="HinhChinh" ColumnName="HinhChinh" />
+          <ScalarProperty Name="Hinh1" ColumnName="Hinh1" />
+          <ScalarProperty Name="Hinh2" ColumnName="Hinh2" />
+          <ScalarProperty Name="Hinh3" ColumnName="Hinh3" />
+          <ScalarProperty Name="SoLuongBan" ColumnName="SoLuongBan" />
+          <ScalarProperty Name="SoLuongTon" ColumnName="SoLuongTon" />
+          <ScalarProperty Name="LuotXem" ColumnName="LuotXem" />
+          <ScalarProperty Name="LuotBinhChon" ColumnName="LuotBinhChon" />
+          <ScalarProperty Name="LuotBinhLuan" ColumnName="LuotBinhLuan" />
+          <ScalarProperty Name="Moi" ColumnName="Moi" />
+          <ScalarProperty Name="DaXoa" ColumnName="DaXoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DB_ShopMobileModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THANHVIENs">
+      <EntityTypeMapping TypeName="DB_ShopMobileModel.THANHVIEN">
+        <MappingFragment StoreEntitySet="THANHVIEN">
+          <ScalarProperty Name="MaTV" ColumnName="MaTV" />
+          <ScalarProperty Name="MaLTV" ColumnName="MaLTV" />
+          <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="CauHoi" ColumnName="CauHoi" />
+          <ScalarProperty Name="CauTraLoi" ColumnName="CauTraLoi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

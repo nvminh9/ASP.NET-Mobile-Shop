@@ -1,0 +1,51 @@
+﻿@using Mobile_Shop.Models;
+@using PagedList.Mvc;
+
+@model PagedList.IPagedList<SANPHAM>
+
+<!-- first section -->
+<div class="product-sec1">
+    @foreach (var item in Model)
+    {
+        <div class="col-xs-4 product-men">
+            <div class="men-pro-item simpleCart_shelfItem">
+                <div class="men-thumb-item">
+                    <img src="@Url.Content("~/Asset/images/product/"+ item.HinhChinh)" alt="">
+                    <div class="men-cart-pro">
+                        <div class="inner-men-cart-pro">
+                            <a href="@Url.Action("Details","Shop", new {id = item.MaSP})" class="link-product-add-cart">Xem chi tiết</a>
+                        </div>
+                    </div>
+                    @if (item.Moi == 1)
+                    {
+                        <span class="product-new-top">New</span>
+
+                    }
+                </div>
+                <div class="item-info-product">
+                    <h4 class="text-truncate">
+                        <a href="single.html">@item.TenSP</a>
+                    </h4>
+                    <div class="info-product-price">
+                        <span class="item_price">@string.Format("{0:N0} \u20ab", item.DonGia)</span>
+                    </div>
+                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                        <form action="@Url.Action("ThemGioHang", "GioHang", new { @pMaSP = item.MaSP, @strUrl = Request.Url.ToString() })" method="post">
+                            <fieldset>
+                                <input type="submit" name="submit" value="Thêm vào Giỏ Hàng" class="button" />
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="clearfix"></div>
+</div>
+
+@*Phân trang*@
+<div class="dlink">
+    Trang@(Model.PageCount <Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page = Page }))
+</div>

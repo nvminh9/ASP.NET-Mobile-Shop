@@ -1,0 +1,91 @@
+﻿@using Mobile_Shop.Models;
+@model IEnumerable<SANPHAM>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+
+    // khởi tạo control webgrid
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 5);
+}
+
+<div class="btn_themsanpham">
+    @Html.ActionLink("Thêm sản phẩm", "TaoMoi", null, new { @class = "btn btn-success" })
+</div>
+<br />
+
+@*Thể hiện dữ liệu thông qua control webgrid*@
+@grid.GetHtml(tableStyle: "divTable", headerStyle: "gridHead", footerStyle: "grodFooter", rowStyle: "girdRow",
+    alternatingRowStyle: "gridAltRow",
+    columns: grid.Columns(
+        grid.Column("MaSP", "Mã sản phẩm"),
+        grid.Column("TenSP", "Tên sản phẩm"),
+        grid.Column("HinhChinh", "Hình ảnh", format: p => @Html.Raw("<img width=\"150\" height =\"50\" src =\"../Asset/images/product/" + p.HinhChinh + "\">")),
+        grid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = p.MaSP })),
+        grid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { id = p.MaSP }))
+        )
+)
+
+@*Css cho từng style của table*@
+
+<style>
+    .divTable {
+        width: 100%;
+        /*border: 1px solid #999999;*/
+        margin-top: 20px;
+    }
+
+        .divTable td {
+            border: 1px solid #999999;
+            text-align: center;
+            padding: 15px;
+        }
+
+    .gridHead {
+        /*background-color: green;*/
+    }
+
+        .gridHead th {
+            background: black;
+            padding: 15px;
+            text-align: center;
+        }
+
+            .gridHead th:first-child {
+                background: black;
+                padding: 15px;
+                border-radius: 10px 0px 0px 0px;
+            }
+
+            .gridHead th:last-child {
+                background: black;
+                padding: 15px;
+                border-radius: 0px 10px 0px 0px;
+            }
+
+            .gridHead th a {
+                color: white;
+            }
+
+    .gridFooter {
+        font-weight: bold;
+    }
+
+    .grodFooter {
+        background: black;
+        border: none;
+        color: #5cb85c;
+        font-weight: 700;
+        border-radius: 0px 0px 10px 10px;
+    }
+
+        .grodFooter a {
+            color: white;
+        }
+    /* CSS nut them san pham */
+    .btn_themsanpham {
+        text-align: center;
+        padding-top: 30px;
+    }
+</style>

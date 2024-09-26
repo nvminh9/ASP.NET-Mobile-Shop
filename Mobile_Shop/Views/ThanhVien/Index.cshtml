@@ -1,0 +1,245 @@
+﻿
+@{
+    ViewBag.Title = "Danh sách Thành viên";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2 style="margin-top: 30px; text-align:center;">Danh sách Thành viên</h2>
+
+@* Form Delete Fade *@
+<!-- Button trigger modal -->
+@*<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+</button>*@
+
+<!-- Modal -->
+<div id="formDelete">
+    <h2>Bạn có chắc muốn xóa thành viên này không ?</h2>
+    <div class="infoXoaContainer" style="margin-top: 10px;">
+        Mã TV: <span id="infoMaTvXoa" style="font-weight:700;">...</span>
+        <br />
+        Họ và Tên: <span id="infoHoTenXoa" style="font-weight:700;">...</span>
+    </div>
+    <div class="btnDeleteContainer">
+        <button id="btnXacNhanXoa">Xác nhận</button>
+        <button id="btnHuyXoa">Cancel</button>
+    </div>
+</div>
+
+@* Form sửa thông tin thành viên *@
+<div class="card-groud">
+    <div id="formEditThanhVien" class="card" style="margin-top: 50px; background: #e4efed; padding: 20px; border-radius: 10px;">
+        <div class="card-header" style="text-align:center; font-weight: 600; font-size:20px;">Chỉnh sửa Thành Viên</div>
+        <div class="card-body">
+            <form>
+                <div class="col-12">
+                    <label for="MaTV">Mã TV</label>
+                    <input type="text" class="form-control" id="txtMaTV" disabled="disabled" style="background: #ffc7c759;" />
+                    <label for="MaLTV">Mã LTV</label>
+                    <input type="text" class="form-control" id="txtMaLTV" disabled="disabled" style="background: #ffc7c759;" />
+                    <label for="TaiKhoan">Tài khoản</label>
+                    <input type="text" class="form-control" id="txtTaiKhoan" disabled="disabled" style="background: #ffc7c759;" />
+                    <label for="MatKhau">Mật khẩu</label>
+                    <input type="text" class="form-control" id="txtMatKhau" disabled="disabled" style="background: #ffc7c759;" />
+                    <label for="HoTen">Họ và Tên</label>
+                    <input type="text" class="form-control" placeholder="Họ và tên" id="txtHoTen" />
+                    <label for="DiaChi">Địa chỉ</label>
+                    <input type="text" class="form-control" placeholder="Địa chỉ" id="txtDiaChi" />
+                    <label for="Email">Email</label>
+                    <input type="text" class="form-control" id="txtEmail" disabled="disabled" style="background: #ffc7c759;" />
+                    <label for="SoDienThoai">Số điện thoại</label>
+                    <input type="text" class="form-control" placeholder="Số điện thoại" id="txtSoDienThoai" />
+                    <label for="CauHoi">Câu hỏi</label>
+                    <input type="text" class="form-control" placeholder="Câu hỏi" id="txtCauHoi" />
+                    <label for="CauTraLoi">Câu trả lời</label>
+                    <input type="text" class="form-control" placeholder="Câu trả lời" id="txtCauTraLoi" />
+                </div>
+            </form>
+        </div>
+        <div class="card-footer" style="padding: 10px; text-align: center;">
+            <button type="button" id="btnEdit" class="btn btn-info">Save</button>
+            <button type="button" id="btnCancelEdit" class="btn btn-info">Cancel</button>
+        </div>
+    </div>
+</div>
+
+@* Bảng danh sách thành viên *@
+<table class="tbThanhVien">
+    <thead class="headTbThanhVien">
+        <tr><td style="border-radius:10px 0px 0px 0px;">Mã TV</td><td>Mã LTV</td><td>Tài khoản</td><td>Mật khẩu</td><td>Họ và tên</td><td>Địa chỉ</td><td>Email</td><td>SĐT</td><td>Câu Hỏi</td><td>Câu Trả Lời</td><td>Nút</td><td>Nút</td></tr>
+    </thead>
+    <tbody id="ctnbodyTbThanhVien" class="bodyTbThanhVien">
+    </tbody>
+</table>
+
+
+
+
+<style>
+    .tbThanhVien {
+        background: #e4efed;
+        border-radius: 10px 0px 10px 0px;
+        width: 100%;
+        margin-top: 30px;
+    }
+
+        .tbThanhVien .headTbThanhVien {
+            background: black;
+            color: whitesmoke;
+            text-align: center;
+        }
+
+            .tbThanhVien .headTbThanhVien tr td {
+                padding: 10px;
+            }
+
+        .tbThanhVien .bodyTbThanhVien {
+        }
+
+            .tbThanhVien .bodyTbThanhVien tr td {
+                padding: 10px;
+                border: .5px solid gainsboro;
+            }
+
+    #formEditThanhVien {
+        display: none;
+    }
+
+    #formDelete {
+        margin-top: 20px;
+        padding: 10px;
+        background: #e4efed;
+        border-radius: 10px;
+        text-align: center;
+        color: black;
+        display: none;
+    }
+    #formDelete h2{
+        font-weight:600;
+        font-size: 18px;
+    }
+    #formDelete .btnDeleteContainer{
+        margin-top: 20px;
+    }
+    #btnXacNhanXoa {
+        background: #d04d4d52;
+        border: none;
+        border-radius: 8px;
+        padding: 10px;
+    }
+    #btnXacNhanXoa:hover {
+        background: #ff000052;
+    }
+    #btnHuyXoa {
+        background: #4dd06452;
+        border: none;
+        border-radius: 8px;
+        padding: 10px;
+    }
+    #btnHuyXoa:hover {
+        background: #00ff2d52;
+    }
+</style>
+
+<script>
+    // Xử lý xuất dữ liệu của bảng
+    $(document).ready(() => {
+        $('#ctnbodyTbThanhVien').empty();
+        $.ajax({
+            type: 'GET',
+            url: '/api/thanhvien',
+            success: (response) => {
+                for (var i = 0; i < response.length; i++) {
+                    const strHtml = '<tr><td>' + response[i].MaTV + '</td><td>' + response[i].MaLTV + '</td><td>' + response[i].TaiKhoan + '</td><td>' + response[i].MatKhau + '</td><td>' + response[i].HoTen + '</td><td>' + response[i].DiaChi + '</td><td>' + response[i].Email + '</td><td>' + response[i].SoDienThoai + '</td><td>' + response[i].CauHoi + '</td><td>' + response[i].CauTraLoi + '</td><td><button type="button" class="btn btn-primary btnEditinForm" data-bs-toggle="modal" data-bs-target="#formEditThanhVien" data-tvid="' + response[i].MaTV + '" >Sửa</button></td><td><button type="button" class="btn btn-primary btnXoainForm" data-bs-toggle="modal" data-bs-target="#formDelete" data-tvid="' + response[i].MaTV + '" >Xóa</button></td></tr>';
+                    $('#ctnbodyTbThanhVien').append(strHtml);
+                }
+            },
+            error: (err) => { console.log(err); }
+        });
+    });
+    // Xử lý nút Sửa trong form bảng
+    $(document).on('click', '.btnEditinForm', (event) => {
+        document.getElementById('formEditThanhVien').style.display = 'block';
+        const tvid = $(event.target).attr('data-tvid');
+        $.ajax({
+            type: 'GET',
+            url: `/api/thanhvien?id=${tvid}`,
+            success: (response) => {
+                $('#txtMaTV').val(response.MaTV);
+                $('#txtMaLTV').val(response.MaLTV);
+                $('#txtTaiKhoan').val(response.TaiKhoan);
+                $('#txtMatKhau').val(response.MatKhau);
+                $('#txtHoTen').val(response.HoTen);
+                $('#txtDiaChi').val(response.DiaChi);
+                $('#txtEmail').val(response.Email);
+                $('#txtSoDienThoai').val(response.SoDienThoai);
+                $('#txtCauHoi').val(response.CauHoi);
+                $('#txtCauTraLoi').val(response.CauTraLoi);
+            },
+            error: (err) => { console.log(err); }
+        })
+    })
+    // Xử lý nút Xóa trong bảng
+    $(document).on('click', '.btnXoainForm', (event) => {
+        document.getElementById('formDelete').style.display = 'block';
+        const tvid = $(event.target).attr('data-tvid');
+        $.ajax({
+            type: 'GET',
+            url: `/api/thanhvien?id=${tvid}`,
+            success: (response) => {
+                $('#infoMaTvXoa').html(response.MaTV);
+                $('#infoHoTenXoa').html(response.HoTen);
+            },
+            error: (err) => { console.log(err); }
+        })
+    })
+    $('#btnHuyXoa').click(() => {
+        document.getElementById('formDelete').style.display = 'none';
+    })
+    // Xử lý nút XÁC NHẬN XÓA
+    $('#btnXacNhanXoa').click(() => {
+        const tvid = $('#infoMaTvXoa').html();
+        $.ajax({
+            type: 'DELETE',
+            url: `/api/thanhvien?id=${tvid}`,
+            success: () => {
+                alert("Đã xóa thành công");
+                window.location.reload();
+            },
+            error: (err) => { console.log(err); }
+        });
+    });
+    btnXacNhanXoa
+    // Xử lý nút Xác nhận sửa trong form sửa
+    $('#btnEdit').click(() => {
+        const matv = $('#txtMaTV').val();
+        const maltv = $('#txtMaLTV').val();
+        const taikhoan = $('#txtTaiKhoan').val();
+        const matkhau = $('#txtMatKhau').val();
+        const hoten = $('#txtHoTen').val();
+        const diachi = $('#txtDiaChi').val();
+        const email = $('#txtEmail').val();
+        const sodienthoai = $('#txtSoDienThoai').val();
+        const cauhoi = $('#txtCauHoi').val();
+        const cautraloi = $('#txtCauTraLoi').val();
+        $.ajax({
+            type: 'PUT',
+            url: '/api/thanhvien',
+            data: {
+                'MaTV': matv,
+                'MaLTV': maltv,
+                'HoTen': hoten,
+                'DiaChi': diachi,
+                'SoDienThoai': sodienthoai
+            },
+            success: () => {
+                alert('Sửa thành công');
+                window.location.reload();
+            },
+            error: (err) => { console.log(err); }
+        });
+    });
+    $('#btnCancelEdit').click(() => {
+        document.getElementById('formEditThanhVien').style.display = 'none';
+    })
+</script>

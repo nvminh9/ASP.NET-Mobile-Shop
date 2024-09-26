@@ -1,0 +1,29 @@
+﻿@using Mobile_Shop.Models
+@model IEnumerable<SANPHAM>
+
+
+<div class="product-sec1 ">
+    <h3 class="heading-tittle">
+        <img src="~/Asset/images/logo/OPPO.jpg" />
+    </h3>
+    <br />
+    <div id="listOppoPartial"></div>
+    <div class="clearfix"></div>
+</div>
+
+<script>
+    // Xử lý list sp theo Oppo
+    $(document).ready(() => {
+        $.ajax({
+            type: 'GET',
+            url: '/api/Shop/3',
+            success: (response) => {
+                for (var i = 0; i < 3; i++) {
+                    const strHtml = '<div class="col-md-4 product-men"><div class="men-pro-item simpleCart_shelfItem"><div class="men-thumb-item"><img src="/Asset/images/product/' + response[i].HinhChinh + '" alt=""><div class="men-cart-pro"><div class="inner-men-cart-pro"><a href="/Shop/Details/' + response[i].MaSP + '" class="link-product-add-cart">Xem chi tiết</a></div></div></div><div class="item-info-product "><h4 class="text-truncate"><a href="single.html">' + response[i].TenSP + '</a></h4><div class="info-product-price"><span class="item_price">' + response[i].DonGia + ' VNĐ</span></div><div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out"><form action="/GioHang/ThemGioHang?pMaSP=' + response[i].MaSP + '&strUrl=/Home" method="post"><fieldset><input type="submit" name="submit" value="Thêm vào Giỏ Hàng" class="button" /></fieldset></form></div></div></div></div>';
+                    $('#listOppoPartial').append(strHtml);
+                }
+            },
+            error: (err) => { console.log(err); }
+        });
+    })
+</script>

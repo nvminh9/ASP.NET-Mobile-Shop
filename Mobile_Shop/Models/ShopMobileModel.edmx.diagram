@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="125f30db1e9043ccafc9267262475972" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_ShopMobileModel.BINHLUAN" Width="1.5" PointX="8.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_ShopMobileModel.CHITIETDONDATHANG" Width="1.5" PointX="8.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_ShopMobileModel.CHITIETPHIEUNHAP" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_ShopMobileModel.CHITIETSANPHAM" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_ShopMobileModel.DONDATHANG" Width="1.5" PointX="6" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_ShopMobileModel.KHACHHANG" Width="1.5" PointX="3.75" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_ShopMobileModel.KHUYENMAI" Width="1.5" PointX="5.25" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_ShopMobileModel.LOAISANPHAM" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_ShopMobileModel.LOAITHANHVIEN" Width="1.5" PointX="1.5" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_ShopMobileModel.LOAITHANHVIEN_QUYEN" Width="1.5" PointX="7.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_ShopMobileModel.NHACUNGCAP" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_ShopMobileModel.NHASANXUAT" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_ShopMobileModel.PHIEUNHAP" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_ShopMobileModel.QUYEN" Width="1.5" PointX="5.5" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_ShopMobileModel.SANPHAM" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_ShopMobileModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_ShopMobileModel.THANHVIEN" Width="1.5" PointX="1.5" PointY="20.375" IsExpanded="true" />
+        <AssociationConnector Association="DB_ShopMobileModel.FK_BINHLUAN_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_ShopMobileModel.FK_BINHLUAN_THANHVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_ShopMobileModel.FK_CHITIETDONDATHANG_DONDATHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_ShopMobileModel.FK_CHITIETDONDATHANG_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_ShopMobileModel.FK_CHITIETPHIEUNHAP_PHIEUNHAP" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_ShopMobileModel.FK_CHITIETPHIEUNHAP_SANPHAM1" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_ShopMobileModel.FK_CHITIETSANPHAM_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_ShopMobileModel.FK_DONDATHANG_KHACHHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_ShopMobileModel.FK_KHACHHANG_THANHVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_ShopMobileModel.FK_KHUYENMAI_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_ShopMobileModel.FK_SANPHAM_LOAISANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_ShopMobileModel.FK_LOAITHANHVIEN_QUYEN_LOAITHANHVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_ShopMobileModel.FK_THANHVIEN_LOAITHANHVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_ShopMobileModel.FK_LOAITHANHVIEN_QUYEN_QUYEN" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_ShopMobileModel.FK_PHIEUNHAP_NHACUNGCAP" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_ShopMobileModel.FK_SANPHAM_NHACUNGCAP" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_ShopMobileModel.FK_SANPHAM_NHASANXUAT" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

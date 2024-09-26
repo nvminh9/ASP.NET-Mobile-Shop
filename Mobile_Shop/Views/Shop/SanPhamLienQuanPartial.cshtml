@@ -1,0 +1,36 @@
+﻿@using Mobile_Shop.Models;
+@model IEnumerable<SANPHAM>
+
+@foreach (var item in Model)
+{
+    <li>
+        <div class="w3l-specilamk">
+            <div class="speioffer-agile">
+                <a href="@Url.Action("Details","Shop", new {id = item.MaSP})">
+                    <img src="@Url.Content("~/Asset/images/product/"+ item.HinhChinh)" alt="">
+                </a>
+            </div>
+            <div class="product-name-w3l">
+                <h4>
+                    <a href="single.html">@item.TenSP</a>
+                </h4>
+                <div class="w3l-pricehkj">
+                    <h6>@string.Format("{0:N0} \u20ab", item.DonGia)</h6>
+                </div>
+                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                    <form action="@Url.Action("ThemGioHang", "GioHang", new { @pMaSP = item.MaSP, @strUrl = Request.Url.ToString() })" method="post">
+                        <fieldset>
+                            <input id="btnThemGioHanginSanPhamlienquan" type="submit" name="submit" value="Thêm vào Giỏ Hàng" class="button" />
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </li>
+}
+
+<script>
+    $('#btnThemGioHanginSanPhamlienquan').click(() => {
+        alert("Thêm vào giỏ hàng thành công");
+    })
+</script>

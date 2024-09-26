@@ -1,0 +1,857 @@
+﻿@using Mobile_Shop.Models
+<head>
+    <title>Shop mobie</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!--/tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!--//tags -->
+    <link href="~/Asset/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Asset/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Asset/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <!--pop-up-box-->
+    <link href="~/Asset/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Asset/css/creditly.css" rel="stylesheet" type="text/css" />
+    <link href="~/Asset/css/easy-responsive-tabs.css" rel="stylesheet" />
+    <link href="~/Asset/css/flexslider.css" rel="stylesheet" type="text/css" />
+    <link href="~/Asset/css/jquery-ui1.css" rel="stylesheet" type="text/css" />
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet" />
+    <!-- Link Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lato:wght@300;400;700&family=Nunito:wght@500;600;700&family=Roboto+Mono:wght@300;400;600&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- top-header -->
+    <div class="header-most-top">
+        <p><b></b></p>
+    </div>
+
+    <!-- //top-header -->
+    <!-- header-bot-->
+    <div class="header-bot">
+        <div class="header-bot_inner_wthreeinfo_header_mid">
+            <!-- header-bot-->
+            <div class="col-md-4 logo_agile">
+                <h1>
+                    <a href="@Url.Action("Index", "Home")">
+                        <img src="~/Asset/images/logo/mobileshopLogoBlacktransparent.png" alt="Logo">
+                    </a>
+                </h1>
+            </div>
+            <!-- header-bot -->
+            <div class="col-md-8 header">
+                <!-- header lists -->
+                <ul>
+                    <li>
+                        <a class="play-icon popup-with-zoom-anim" href="#small-dialog1">
+                            <span class="fa fa-map-marker" aria-hidden="true"></span> Định vị cửa hàng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#myModal1">
+                            <span class="fa fa-truck" aria-hidden="true"></span>Đơn hàng
+                        </a>
+                    </li>
+                    <li>
+                        <span class="fa fa-phone" aria-hidden="true"></span> 0975436383
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#myModal1">
+                            @if (Session["TaiKhoan"] != null && Session["TaiKhoan"] != "")
+                            {
+                                THANHVIEN tv = (THANHVIEN)Session["TaiKhoan"];
+                                <span>@tv.HoTen</span>
+                                @Html.ActionLink("Đăng xuất", "DangXuat", "Home")
+                            }
+                            else
+                            {
+
+                                <span class="fa fa-unlock-alt" aria-hidden="true"></span><span style="">Đăng nhập</span>
+                            }
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("DangKy", "Home")">
+                            <span class="fa fa-pencil-square-o" aria-hidden="true"></span> Đăng ký
+                        </a>
+                    </li>
+                </ul>
+                <!-- //header lists -->
+                <!-- search -->
+                <!--Tạo form submit action tìm kiếm-->
+                <div class="agileits_search">
+                    @using (Html.BeginForm("KQTimKiem", "TimKiem"))
+                    {
+
+
+                        <input name="pTuKhoa" type="search" placeholder="Bạn cần tìm gì?" required="">
+                        <button type="submit" class="btn btn-default" aria-label="Left Align">
+                            <span class="fa fa-search" aria-hidden="true"> </span>
+                        </button>
+                    }
+                </div>
+                <!-- //search -->
+                <!-- cart details -->
+                @Html.Action("GioHangPartial", "GioHang")
+                <!-- //cart details -->
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- shop locator (popup) -->
+    <!-- Button trigger modal(shop-locator) -->
+    <div id="small-dialog1" class="mfp-hide">
+        <div class="select-city">
+            <h3>Please Select Your Location</h3>
+            <select class="list_of_cities">
+                <optgroup label="Popular Cities">
+                    <option selected style="display:none;color:#eee;">Việt Nam</option>
+                    <option value="HaNoi">Hà Nội</option>
+                    <option value="TPHCM">Hồ Chí Minh</option>
+                    <option value="HaiPhong">Hải Phòng</option>
+                    <option value="DaNang">Đà Nẵng</option>
+                    <option value="CanTho">Cần Thơ</option>
+                    <option value="AnGiang">An Giang</option>
+                    <option value="BaRiaVungTau">Bà Rịa - Vũng Tàu</option>
+                    <option value="BacLieu">Bạc Liêu</option>
+                    <option value="BacGiang">Bắc Giang</option>
+                    <option value="BacKan">Bắc Kạn</option>
+                    <option value="BacNinh">Bắc Ninh</option>
+                    <option value="BenTre">Bến Tre</option>
+                    <option value="BinhDinh">Bình Định</option>
+                    <option value="BinhDuong">Bình Dương</option>
+                    <option value="BinhPhuoc">Bình Phước</option>
+                    <option value="BinhThuan">Bình Thuận</option>
+                    <option value="CaMau">Cà Mau</option>
+                    <option value="CaoBang">Cao Bằng</option>
+                    <option value="DakLak">Đắk Lắk</option>
+                    <option value="DakNong">Đắk Nông</option>
+                    <option value="DienBien">Điện Biên</option>
+                    <option value="DongNai">Đồng Nai</option>
+                    <option value="DongThap">Đồng Tháp</option>
+                    <option value="GiaLai">Gia Lai</option>
+                    <option value="HaGiang">Hà Giang</option>
+                    <option value="HaNam">Hà Nam</option>
+                    <option value="HaTinh">Hà Tĩnh</option>
+                    <option value="HaiDuong">Hải Dương</option>
+                    <option value="HoaBinh">Hòa Bình</option>
+                    <option value="HauGiang">Hậu Giang</option>
+                    <option value="HungYen">Hưng Yên</option>
+                    <option value="KhanhHoa">Khánh Hòa</option>
+                    <option value="KienGiang">Kiên Giang</option>
+                    <option value="KonTum">Kon Tum</option>
+                    <option value="LaiChau">Lai Châu</option>
+                    <option value="LamDong">Lâm Đồng</option>
+                    <option value="LangSon">Lạng Sơn</option>
+                    <option value="LaoCai">Lào Cai</option>
+                    <option value="LongAn">Long An</option>
+                    <option value="NamDinh">Nam Định</option>
+                    <option value="NgheAn">Nghệ An</option>
+                    <option value="NinhBinh">Ninh Bình</option>
+                    <option value="NinhThuan">Ninh Thuận</option>
+                    <option value="PhuTho">Phú Thọ</option>
+                    <option value="PhuYen">Phú Yên</option>
+                    <option value="QuangBinh">Quảng Bình</option>
+                    <option value="QuangNam">Quảng Nam</option>
+                    <option value="QuangNgai">Quảng Ngãi</option>
+                    <option value="QuangNinh">Quảng Ninh</option>
+                    <option value="QuangTri">Quảng Trị</option>
+                    <option value="SocTrang">Sóc Trăng</option>
+                    <option value="SonLa">Sơn La</option>
+                    <option value="TayNinh">Tây Ninh</option>
+                    <option value="ThaiBinh">Thái Bình</option>
+                    <option value="ThaiNguyen">Thái Nguyên</option>
+                    <option value="ThanhHoa">Thanh Hóa</option>
+                    <option value="ThuaThienHue">Thừa Thiên-Huế</option>
+                    <option value="TienGiang">Tiền Giang</option>
+                    <option value="TraVinh">Trà Vinh</option>
+                    <option value="TuyenQuang">Tuyên Quang</option>
+                    <option value="VinhLong">Vĩnh Long</option>
+                    <option value="VinhPhuc">Vĩnh Phúc</option>
+                    <option value="YenBai">Yên Bái</option>
+                </optgroup>
+            </select>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- //shop locator (popup) -->
+    <!-- signin Model -->
+    <!-- Modal1 -->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body modal-body-sub_agile">
+                    <div class="main-mailposi">
+                        <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                    </div>
+                    <div class="modal_body_left modal_body_left1">
+                        <h3 class="agileinfo_sign">ĐĂNG NHẬP</h3>
+                        <p>
+                            Đăng nhập ngay bây giờ, Hãy bắt đầu Mua sắm hàng tạp hóa của bạn. Bạn chưa có tài khoản?
+                            <a href="#" data-toggle="modal" data-target="#myModal2">Đăng ký </a>
+                        </p>
+                        @using (Ajax.BeginForm("DangNhap", "Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "ThongBao" }))
+                        {
+                            <div class="styled-input agile-styled-input-top">
+                                <input type="text" placeholder="Tên Đăng Nhập" name="Name" required="">
+                            </div>
+                            <div class="styled-input">
+                                <input type="password" placeholder="Mật Khẩu" name="password" required="">
+                            </div>
+                            <p><a href="#">Quên mật khẩu ?</a></p>
+                            <input type="submit" value="Đăng nhập">
+                            <h3 style="font-weight: bold; color: red" , id="ThongBao">@ViewBag.ThongBao</h3>
+                        }
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- //Modal content-->
+        </div>
+    </div>
+
+    <!-- //Modal1 -->
+    <!-- //signin Model -->
+    <!-- signup Model -->
+    <!-- Modal2 -->
+    <!-- //Modal2 -->
+    <!-- //signup Model -->
+    <!-- //header-bot -->
+    <!-- navigation -->
+    @Html.Action("MenuPartial", "Home")
+    @RenderBody()
+
+    <!-- //special offers -->
+    <!-- newsletter -->
+    <div class="footer-top">
+        <div class="container-fluid">
+            <div class="col-xs-8 agile-leftmk">
+                <h2>Giao dịch trên toàn quốc</h2>
+                <p>Giao hàng miễn phí cho đơn hàng đầu tiên của bạn!</p>
+                <form action="#" method="post">
+                    <input type="email" placeholder="E-mail" name="email" required="">
+                    <input type="submit" value="Subscribe">
+                </form>
+                <div class="newsform-w3l">
+                    <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="col-xs-4 w3l-rightmk">
+                <img src="~/Asset/images/Others/tab3.png" alt=" ">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- //newsletter -->
+    <!-- footer -->
+    <footer>
+        <div class="container">
+            <!-- footer first section -->
+            <p class="footer-main">
+                <span class="text-center"> 📱Chào mừng bạn đến với cửa hàng điện thoại chúng tôi! 📱</span>
+                <br />
+                Chúng tôi chuyên cung cấp các sản phẩm điện thoại chất lượng từ các thương hiệu hàng đầu. Đội ngũ của chúng tôi luôn sẵn sàng để hỗ trợ bạn trong quá trình mua sắm và sau khi mua hàng. Chúng tôi cam kết cung cấp dịch vụ chăm sóc khách hàng tốt nhất.Mua sắm dễ dàng và tiện lợi tại cửa hàng của chúng tôi. Chúng tôi cung cấp nhiều lựa chọn thanh toán và cung cấp kiến thức chi tiết về sản phẩm. Hãy tham khảo sản phẩm của chúng tôi và liên hệ nếu bạn cần thêm thông tin hoặc hỗ trợ.Chúng tôi cũng cam kết bảo vệ môi trường và khuyến khích bạn tham gia vào cuộc hành trình này. Cảm ơn bạn đã ghé thăm cửa hàng của chúng tôi, và chúng tôi mong được phục vụ bạn một cách tận tâm.
+            </p>
+            <!-- //footer first section -->
+            <!-- footer second section -->
+            <div class="w3l-grids-footer">
+                <div class="col-xs-4 offer-footer">
+                    <div class="col-xs-4 icon-fot">
+                        <span class="fa fa-map-marker" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-xs-8 text-form-footer">
+                        <h3>Theo dõi đơn hàng</h3>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="col-xs-4 offer-footer">
+                    <div class="col-xs-4 icon-fot">
+                        <span class="fa fa-refresh" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-xs-8 text-form-footer">
+                        <h3>Trả lại miễn phí và dễ dàng</h3>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="col-xs-4 offer-footer">
+                    <div class="col-xs-4 icon-fot">
+                        <span class="fa fa-times" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-xs-8 text-form-footer">
+                        <h3>Hủy trực tuyến</h3>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- //footer second section -->
+            <!-- footer third section -->
+            <div class="footer-info w3-agileits-info">
+                <!-- footer categories -->
+                <div class="col-sm-5 address-right">
+                    <div class="col-xs-6 footer-grids">
+                        <h3>Thể loại</h3>
+                        <ul>
+                            <li>
+                                <a href="product.html">Tích điểm Quà tặng VIP</a>
+                            </li>
+                            <li>
+                                <a href="product.html">Lịch sử mua hàng</a>
+                            </li>
+                            <li>
+                                <a href="product.html">Tìm hiểu về mua trả</a>
+                            </li>
+                            <li>
+                                <a href="product2.html">Chính sách bảo hành</a>
+                            </li>
+                            <li>
+                                <a href="product.html">Chính sách đổi trả</a>
+                            </li>
+                            <li>
+                                <a href="product2.html">Giao hàng & Thanh</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-6 footer-grids agile-secomk">
+                        <ul>
+                            <li>
+                                <a href="product.html">Hướng dẫn mua online</a>
+                            </li>
+                            <li>
+                                <a href="product.html">Bán hàng doanh nghiệp</a>
+                            </li>
+                            <li>
+                                <a href="product.html">Bán hàng doanh nghiệp</a>
+                            </li>
+                            <li>
+                                <a href="product.html">In hóa đơn điện tử</a>
+                            </li>
+                            <li>
+                                <a href="product2.html">Quy chế hoạt động</a>
+                            </li>
+                            <li>
+                                <a href="product.html">Chính sách xử lý dữ liệu cá nhân</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <!-- //footer categories -->
+                <!-- quick links -->
+                <div class="col-sm-5 address-right">
+                    <div class="col-xs-6 footer-grids">
+                        <h3>Đường dẫn nhanh</h3>
+                        <ul>
+                            <li>
+                                <a href="about.html">Thông tin</a>
+                            </li>
+                            <li>
+                                <a href="contact.html">Liên lạc</a>
+                            </li>
+                            <li>
+                                <a href="help.html">Giúp đỡ</a>
+                            </li>
+                            <li>
+                                <a href="faqs.html">Câu hỏi thường gặp</a>
+                            </li>
+                            <li>
+                                <a href="terms.html">Điều khoản sử dụng</a>
+                            </li>
+                            <li>
+                                <a href="privacy.html">Chính sách bảo mật</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-6 footer-grids">
+                        <h3>
+                            Thông tin liên lạc
+
+                        </h3>
+                        <ul>
+                            <li>
+                                <i class="fa fa-map-marker"></i> 140 Lê Trọng Tấn, P.Tây Thạnh, Q.Tân Phú, TP.Hồ Chí Minh.
+                            </li>
+                            <li>
+                                <i class="fa fa-phone"></i> Khiếu nại: 1800.1062 (8:00 - 21:30)
+                            </li>
+                            <li>
+                                <i class="fa fa-phone"></i> Bảo hành: 1800.1064 (8:00 - 21:00)
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope-o"></i>
+                                <a href="mailto:mobilestore@gmail.com"> mobilestore@gmail.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- //quick links -->
+                <!-- social icons -->
+                <div class="col-sm-2 footer-grids  w3l-socialmk">
+                    <h3>Follow Us on</h3>
+                    <div class="social">
+                        <ul>
+                            <li>
+                                <a class="icon fb" href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="icon tw" href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="icon gp" href="#">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="agileits_app-devices">
+                        <h5>Download the App</h5>
+                        <a href="#">
+                            <img src="~/Asset/images/logo/1.png" alt="">
+                        </a>
+                        <a href="#">
+                            <img src="~/Asset/images/logo/2.png" alt="">
+                        </a>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <!-- //social icons -->
+                <div class="clearfix"></div>
+            </div>
+            <!-- //footer third section -->
+            <!-- footer fourth section (text) -->
+            <div class="agile-sometext">
+                <div class="sub-some">
+                    <h5>Mua sắm trực tuyến với những ưu đãi và ưu đãi tốt nhất</h5>
+                    <p>
+                        Chào mừng bạn đến với cửa hàng điện thoại của chúng tôi, nơi bạn có cơ hội sở hữu những chiếc smartphone hàng đầu với giá cực kỳ hấp dẫn!
+                        <br />
+                        🌟 Những ưu đãi hấp dẫn dành cho bạn:
+                        <br />
+                        🔥 Giảm giá lớn: Đến ngay cửa hàng của chúng tôi để nhận ngay ưu đãi giảm giá đặc biệt cho các sản phẩm điện thoại hàng đầu trong ngành.
+                        <br />
+                        🎁 Quà tặng kèm độc đáo: Mua bất kỳ sản phẩm điện thoại nào và bạn sẽ được tặng ngay một bộ quà tặng hấp dẫn, bao gồm bao da chất lượng, tai nghe cao cấp và thẻ nhớ tốc độ cao.
+                        <br />
+                        🌐 Trả góp linh hoạt: Chúng tôi hiểu rằng không phải ai cũng có thể trả tiền mặt ngay lập tức. Chính vì vậy, chúng tôi cung cấp tùy chọn trả góp thuận tiện để bạn có thể sở hữu điện thoại ưa thích mà không cần lo lắng về tài chính.
+                    </p>
+                </div>
+                <!-- brands -->
+                <div class="sub-some">
+                    <h5>Thương hiệu điện thoại</h5>
+                    <ul>
+                        <li>
+                            <a href="product.html">Apple (iPhone)</a>
+                        </li>
+                        <li>
+                            <a href="product.html">Samsung</a>
+                        </li>
+                        <li>
+                            <a href="product.html">Xiaomi</a>
+                        </li>
+                        <li>
+                            <a href="product.html">Oppo</a>
+                        </li>
+                        <li>
+                            <a href="product.html">OnePlus</a>
+                        </li>
+                        <li>
+                            <a href="product.html"> Google (Pixel)</a>
+                        </li>
+                        <li>
+                            <a href="product.html">Realme</a>
+                        </li>
+                        <li>
+                            <a href="product.html">Vivo</a>
+                        </li>
+                        <li>
+                            <a href="product2.html">Asus</a>
+                        </li>
+                        <li>
+                            <a href="product2.html">Sony</a>
+                        </li>
+                        <li>
+                            <a href="product2.html">Motorola</a>
+                        </li>
+                        <li>
+                            <a href="product2.html">Nokia</a>
+                        </li>
+                        <li>
+                            <a href="product2.html">Lenovo</a>
+                        </li>
+                        <li>
+                            <a href="product.html">Poco</a>
+                        </li>
+                        <li>
+                            <a href="product2.html">Infinix</a>
+                        </li>
+                        <li>
+                            <a href="product2.html">Itel</a>
+                        </li>
+                        <li>
+                            <a href="product2.html">Masstel</a>
+                        </li>
+                        <li>
+                            <a href="product2.html">Honor</a>
+                        </li>
+                        <li>
+                            <a href="product2.html">TECNO</a>
+                        </li>
+                        <li>
+                            <a href="product2.html">TLC</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- //brands -->
+                <!-- payment -->
+                <div class="sub-some child-momu">
+                    <h5>Payment Method</h5>
+                    <ul>
+                        <li>
+                            <img src="~/Asset/images/Pay/pay/pay2.png" alt="">
+                        </li>
+                        <li>
+                            <img src="~/Asset/images/Pay/pay5.png" alt="">
+                        </li>
+                        <li>
+                            <img src="~/Asset/images/Pay/pay1.png" alt="">
+                        </li>
+                        <li>
+                            <img src="~/Asset/images/Pay/pay4.png" alt="">
+                        </li>
+                        <li>
+                            <img src="~/Asset/images/Pay/pay6.png" alt="">
+                        </li>
+                        <li>
+                            <img src="~/Asset/images/Pay/pay3.png" alt="">
+                        </li>
+                        <li>
+                            <img src="~/Asset/images/Pay/pay7.png" alt="">
+                        </li>
+                        <li>
+                            <img src="~/Asset/images/Pay/pay8.png" alt="">
+                        </li>
+                        <li>
+                            <img src="~/Asset/images/Pay/pay9.png" alt="">
+                        </li>
+                    </ul>
+                </div>
+                <!-- //payment -->
+            </div>
+            <!-- //footer fourth section (text) -->
+        </div>
+    </footer>
+    <!-- //footer -->
+    <!-- copyright -->
+    <div class="copy-right">
+        <div class="container">
+            <p>
+                © 2023 Công ty cổ phần Mobile Shop. Địa chỉ: 1 Đ. Cộng Hòa, Phường 4, Tân Bình, Thành phố Hồ Chí Minh.
+                <br />
+                Điện thoại: 028 38125960. Email: mobileshop@gmail.com. Chịu trách nhiệm nội dung: Nguyễn Tấn Hữu Danh.
+            </p>
+        </div>
+    </div>
+    <!-- //copyright -->
+    <!-- js-files -->
+    <!-- jquery -->
+    <script src="~/Asset/js/jquery-2.1.4.min.js"></script>
+    <!-- //jquery -->
+    <!-- popup modal (for signin & signup)-->
+    <script src="~/Asset/js/jquery.magnific-popup.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+                fixedContentPos: false,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: false,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+
+        });
+    </script>
+    <!-- Large modal -->
+    <!-- <script>
+        $('#').modal('show');
+    </script> -->
+    <!-- //popup modal (for signin & signup)-->
+    <!-- cart-js -->
+    <script src="~/Asset/js/minicart.js"></script>
+    <script>
+        paypalm.minicartk.render(); //use only unique class names other than paypal1.minicart1.Also Replace same class name in css and minicart.min.js
+
+        paypalm.minicartk.cart.on('checkout', function (evt) {
+            var items = this.items(),
+                len = items.length,
+                total = 0,
+                i;
+
+            // Count the number of each item in the cart
+            for (i = 0; i < len; i++) {
+                total += items[i].get('quantity');
+            }
+
+            if (total < 3) {
+                alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+                evt.preventDefault();
+            }
+        });
+    </script>
+    <!-- //cart-js -->
+    <!--quantity-->
+    <script>
+        $('.value-plus').on('click', function () {
+            var divUpd = $(this).parent().find('.value'),
+                newVal = parseInt(divUpd.text(), 10) + 1;
+            divUpd.text(newVal);
+        });
+
+        $('.value-minus').on('click', function () {
+            var divUpd = $(this).parent().find('.value'),
+                newVal = parseInt(divUpd.text(), 10) - 1;
+            if (newVal >= 1) divUpd.text(newVal);
+        });
+    </script>
+    <!--quantity-->
+    <script>
+        $(document).ready(function (c) {
+            $('.close1').on('click', function (c) {
+                $('.rem1').fadeOut('slow', function (c) {
+                    $('.rem1').remove();
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function (c) {
+            $('.close2').on('click', function (c) {
+                $('.rem2').fadeOut('slow', function (c) {
+                    $('.rem2').remove();
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function (c) {
+            $('.close3').on('click', function (c) {
+                $('.rem3').fadeOut('slow', function (c) {
+                    $('.rem3').remove();
+                });
+            });
+        });
+    </script>
+    <!--//quantity-->
+    <!-- password-script -->
+    <script>
+        window.onload = function () {
+            document.getElementById("password1").onchange = validatePassword;
+            document.getElementById("password2").onchange = validatePassword;
+        }
+
+        function validatePassword() {
+            var pass2 = document.getElementById("password2").value;
+            var pass1 = document.getElementById("password1").value;
+            if (pass1 != pass2)
+                document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+            else
+                document.getElementById("password2").setCustomValidity('');
+            //empty string means no validation error
+        }
+    </script>
+    <!-- //password-script -->
+    <!-- script for tabs -->
+    <script>
+        $(function () {
+
+            var menu_ul = $('.faq > li > ul'),
+                menu_a = $('.faq > li > a');
+
+            menu_ul.hide();
+
+            menu_a.click(function (e) {
+                e.preventDefault();
+                if (!$(this).hasClass('active')) {
+                    menu_a.removeClass('active');
+                    menu_ul.filter(':visible').slideUp('normal');
+                    $(this).addClass('active').next().stop(true, true).slideDown('normal');
+                } else {
+                    $(this).removeClass('active');
+                    $(this).next().stop(true, true).slideUp('normal');
+                }
+            });
+
+        });
+    </script>
+    <!-- script for tabs -->
+    <!-- smoothscroll -->
+    <script src="~/Asset/js/SmoothScroll.min.js"></script>
+    <!-- //smoothscroll -->
+    <!-- start-smooth-scrolling -->
+    <script src="~/Asset/js/move-top.js"></script>
+    <script src="~/Asset/js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
+    <!-- smooth-scrolling-of-move-up -->
+    <script>
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            */
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <!-- //smooth-scrolling-of-move-up -->
+    <!-- imagezoom -->
+    <script src="~/Asset/js/imagezoom.js"></script>
+    <!-- //imagezoom -->
+    <!-- FlexSlider -->
+    <script src="~/Asset/js/jquery.flexslider.js"></script>
+    <script>
+        // Can also be used with $(document).ready()
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+            });
+        });
+    </script>
+    <!-- //FlexSlider-->
+    <!-- flexisel (for special offers) -->
+    <script src="~/Asset/js/jquery.flexisel.js"></script>
+    <script>
+        $(window).load(function () {
+            $("#flexiselDemo1").flexisel({
+                visibleItems: 3,
+                animationSpeed: 1000,
+                autoPlay: true,
+                autoPlaySpeed: 3000,
+                pauseOnHover: true,
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint: 480,
+                        visibleItems: 1
+                    },
+                    landscape: {
+                        changePoint: 640,
+                        visibleItems: 2
+                    },
+                    tablet: {
+                        changePoint: 768,
+                        visibleItems: 2
+                    }
+                }
+            });
+
+        });
+    </script>
+    <!-- //flexisel (for special offers) -->
+    <!-- for bootstrap working -->
+    <script src="~/Asset/js/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+
+    <script src="~/Asset/js/creditly.js"></script>
+
+    <script>
+        $(function () {
+            var creditly = Creditly.initialize(
+                '.creditly-wrapper .expiration-month-and-year',
+                '.creditly-wrapper .credit-card-number',
+                '.creditly-wrapper .security-code',
+                '.creditly-wrapper .card-type');
+
+            $(".creditly-card-form .submit").click(function (e) {
+                e.preventDefault();
+                var output = creditly.validate();
+                if (output) {
+                    // Your validated credit card output
+                    console.log(output);
+                }
+            });
+        });
+    </script>
+    <!-- //credit-card -->
+
+    <script src="~/Asset/js/easyResponsiveTabs.js"></script>
+    <script>
+        $(document).ready(function () {
+            //Horizontal Tab
+            $('#parentHorizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true, // 100% fit in a container
+                tabidentify: 'hor_1', // The tab groups identifier
+                activate: function (event) { // Callback function if tab is switched
+                    var $tab = $(this);
+                    var $info = $('#nested-tabInfo');
+                    var $name = $('span', $info);
+                    $name.text($tab.text());
+                    $info.show();
+                }
+            });
+        });
+    </script>
+    <!-- //easy-responsive-tabs -->
+    <script src="~/Asset/js/jquery-ui.js"></script>
+    <script>
+        //<![CDATA[
+        $(window).load(function () {
+            $("#slider-range").slider({
+                range: true,
+                min: 300000,
+                max: 50000000,
+                values: [300000, 50000000],
+                slide: function (event, ui) {
+                    $("#amount").val(ui.values[0] + "đ" + " - " + ui.values[1] + "đ");
+                }
+            });
+            $("#amount").val($("#slider-range").slider("values", 0) + "đ" + " - " + $("#slider-range").slider("values", 1) + "đ");
+
+        }); //]]>
+    </script>
+    <!-- //js-files -->
+</body>
+
